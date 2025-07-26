@@ -11,7 +11,9 @@ function App() {
   useEffect(() => {
     const fetchrestaurants = async () => {
       try {
-        const response = await fetch("http://localhost:3000/Restaurant.json");
+        const response = await fetch(
+          "https://chn-b102-swiggy-clone.vercel.app/Restaurant.json"
+        );
         if (response.ok) {
           const data = await response.json();
           setRestaurants(data);
