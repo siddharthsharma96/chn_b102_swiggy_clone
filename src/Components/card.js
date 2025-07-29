@@ -1,6 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 const Card = ({ res, show }) => {
+  const navigate = useNavigate();
+  const redirectHandler = () => {
+    navigate(`/restaurant/${res.id}`);
+  };
   return (
-    <div className="card">
+    <div className="card" onClick={redirectHandler}>
       <img alt="res" src={`/images/${res.cloudinaryImageId}.avif`}></img>
       <div className="card__details">
         <h3 className="card__name">{res.name}</h3>

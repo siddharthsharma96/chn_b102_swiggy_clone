@@ -48,6 +48,8 @@
   margin-top: 5px;
   font-family: var(--font-secondary);
 }
+.account__section {
+}
 
 .account__section > div {
   display: flex;

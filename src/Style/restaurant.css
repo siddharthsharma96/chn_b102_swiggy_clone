@@ -25,6 +25,12 @@
   width: 55%;
   padding-left: 15px;
 }
+.restaurant__menu-item-desc {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 600px;
+}
 .restaurant__info > p {
   font-weight: 800;
   font-size: 28px;

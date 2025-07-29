@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const Header = () => {
+const Header = ({ cartItems }) => {
   return (
     <div className="header">
       <div className="header__logo-container">
@@ -24,7 +24,12 @@ const Header = () => {
             <NavLink to={"/search"}>Search</NavLink>
           </li>
           <li>
-            <NavLink to={"/cart"}>Cart</NavLink>
+            <NavLink to={"/cart"}>
+              Cart
+              {cartItems.length >= 1 && (
+                <span className="cartItemCount">{cartItems.length}</span>
+              )}
+            </NavLink>
           </li>
         </ul>
       </div>

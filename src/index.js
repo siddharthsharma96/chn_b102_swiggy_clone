@@ -33,7 +33,7 @@ const urls = createBrowserRouter([
         element: <Search></Search>,
       },
       {
-        path: "/restaurant",
+        path: "/restaurant/:resId",
         element: <Restaurant></Restaurant>,
       },
       {

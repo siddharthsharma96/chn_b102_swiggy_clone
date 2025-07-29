@@ -22,13 +22,51 @@ function App() {
     };
     fetchrestaurants();
   }, []);
+  const addItem = (item) => {
+    const existingIndex = cartItems.findIndex(
+      (cartItem) => cartItem.id === item.id
+    );
+    if (existingIndex !== -1) {
+      const updateCart = [...cartItems];
+      updateCart[existingIndex].quantity += 1;
+      setCartItems(updateCart);
+    } else {
+      setCartItems([...cartItems, { ...item, quantity: 1 }]);
+    }
+  };
+
+  const removeItem = (item) => {
+    const existingIndex = cartItems.findIndex(
+      (cartItem) => cartItem.id === item.id
+    );
+    if (existingIndex !== -1) {
+      const updateCart = [...cartItems];
+      if (updateCart[existingIndex].quantity > 1) {
+        updateCart[existingIndex].quantity -= 1;
+      } else {
+        updateCart.splice(existingIndex, 1);
+      }
+      setCartItems(updateCart);
+    }
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
+  };
 
   return (
     <div>
-      <Header></Header>
+      <Header cartItems={cartItems}></Header>
       <Outlet
         context={{
           restaurants,
+          addItem,
+          setCartItems,
+          cartItems,
+          addItem,
+          removeItem,
+          clearCart,
+          setRestaurants,
         }}
       ></Outlet>
     </div>
