@@ -1,9 +1,15 @@
 import AccountSection from "./AccountSection";
 
-const CartItems = ({ cartItems, addItem, removeItem, totalPrice }) => {
+const CartItems = ({
+  cartItems,
+  addItem,
+  removeItem,
+  totalPrice,
+  handlePayment,
+}) => {
   return (
     <div className="cart-items">
-      <AccountSection></AccountSection>
+      <AccountSection handlePayment={handlePayment}></AccountSection>
       <div className="cart-items__info">
         <div className="cart-items__info-container">
           <div className="cart-items__amount-heading">

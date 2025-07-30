@@ -1,15 +1,22 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Home from "./Pages/Home";
-import Cart from "./Pages/Carts";
-import Help from "./Pages/Help";
-import Search from "./Pages/Search";
-import Restaurant from "./Pages/Restaurant";
-import PageNotFound from "./Pages/PageNotFound";
+// import Home from "./Pages/Home";
+// import Cart from "./Pages/Carts";
+// import Help from "./Pages/Help";
+// import Search from "./Pages/Search";
+// import Restaurant from "./Pages/Restaurant";
+// import PageNotFound from "./Pages/PageNotFound";
+
+const Home = lazy(() => import("./Pages/Home"));
+const Cart = lazy(() => import("./Pages/Carts"));
+const Help = lazy(() => import("./Pages/Help"));
+const Search = lazy(() => import("./Pages/Search"));
+const Restaurant = lazy(() => import("./Pages/Restaurant"));
+const PageNotFound = lazy(() => import("./Pages/PageNotFound"));
 
 const urls = createBrowserRouter([
   {
@@ -18,27 +25,56 @@ const urls = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home></Home>,
+        element: (
+          <Suspense fallback={<h1 className="aas">Loading</h1>}>
+            <Home></Home>
+          </Suspense>
+        ),
       },
       {
         path: "/cart",
-        element: <Cart></Cart>,
+        element: (
+          <Suspense fallback={<h1 className="aas">Loading</h1>}>
+            {" "}
+            <Cart></Cart>
+          </Suspense>
+        ),
       },
       {
         path: "/help",
-        element: <Help></Help>,
+        element: (
+          <Suspense fallback={<h1 className="aas">Loading</h1>}>
+            {" "}
+            <Help></Help>
+          </Suspense>
+        ),
       },
       {
         path: "/search",
-        element: <Search></Search>,
+        element: (
+          <Suspense fallback={<h1 className="aas">Loading</h1>}>
+            {" "}
+            <Search></Search>
+          </Suspense>
+        ),
       },
       {
         path: "/restaurant/:resId",
-        element: <Restaurant></Restaurant>,
+        element: (
+          <Suspense fallback={<h1 className="aas">Loading</h1>}>
+            {" "}
+            <Restaurant></Restaurant>
+          </Suspense>
+        ),
       },
       {
         path: "*",
-        element: <PageNotFound></PageNotFound>,
+        element: (
+          <Suspense fallback={<h1 className="aas">Loading</h1>}>
+            {" "}
+            <PageNotFound></PageNotFound>
+          </Suspense>
+        ),
       },
     ],
   },
